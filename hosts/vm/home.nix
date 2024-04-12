@@ -1,11 +1,22 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
+
+  imports =  [
+  ../../modules/home-manager/nvim
+  ../../modules/home-manager/git
+  ../../modules/home-manager/zsh
+];
+
+
+  home-manager = {
+  extraSpecialArgs = { inherit inputs; };
+  users = {
+  "tris" = {
   home.username = "tris";
   home.homeDirectory = "/home/tris";
-
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -72,4 +83,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  };
+  };
+  };
 }

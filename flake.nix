@@ -14,6 +14,10 @@ url = "github:nix-community/NixOS-WSL";
 inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+    };
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -24,11 +28,8 @@ inputs.nixpkgs.follows = "nixpkgs";
         ./modules/nixos/awesome.nix
         ./modules/nixos/discord.nix
         ./modules/nixos/general.nix
-        ./modules/nixos/git.nix
-        ./modules/nixos/neovim.nix
         ./modules/nixos/programming_langs.nix
         ./modules/nixos/terminal_tools.nix
-        ./modules/nixos/zsh.nix
          inputs.home-manager.nixosModules.default
       ];
     };
@@ -40,11 +41,8 @@ inputs.nixpkgs.follows = "nixpkgs";
         ./modules/nixos/awesome.nix
         ./modules/nixos/discord.nix
         ./modules/nixos/general.nix
-        ./modules/nixos/git.nix
-        ./modules/nixos/neovim.nix
         ./modules/nixos/programming_langs.nix
         ./modules/nixos/terminal_tools.nix
-        ./modules/nixos/zsh.nix
          inputs.home-manager.nixosModules.default
 	 inputs.nixos-wsl.nixosModules.wsl
       ];

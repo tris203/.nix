@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./home.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -83,12 +84,12 @@
     ];
   };
 
-  home-manager = {
-  extraSpecialArgs = { inherit inputs; };
-  users = {
-  "tris" = import ./home.nix;
-  };
-  };
+  # home-manager = {
+  # extraSpecialArgs = { inherit inputs; };
+  # users = {
+  # "tris" = import ./home.nix;
+  # };
+  # };
 
 
   # List packages installed in system profile. To search, run:
