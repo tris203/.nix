@@ -14,6 +14,7 @@
     fzf
     neofetch
     docker
+    xclip
   ];
 
    fonts.packages = with pkgs; [

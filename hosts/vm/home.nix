@@ -81,6 +81,18 @@
           # EDITOR = "emacs";
         };
 
+        gtk = {
+          enable = true;
+          theme = {
+            name = "Tokyonight-Dark-BL";
+            package = pkgs.tokyo-night-gtk;
+          };
+          iconTheme = {
+            name = "Flat-Remix-Teal-Dark";
+            package = pkgs.flat-remix-icon-theme;
+          };
+        };
+
         # Let Home Manager install and manage itself.
         programs.home-manager.enable = true;
       };

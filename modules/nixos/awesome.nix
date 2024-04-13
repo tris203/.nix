@@ -1,6 +1,11 @@
 { pkgs, lib, ... }:
 {
 
+  
+  nixpkgs.overlays = [
+  (import ../../overlays/awesome-git.nix)
+  ];
+
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
@@ -11,11 +16,18 @@
     };
 
     windowManager.awesome = {
+      package = pkgs.awesome-luajit-git;
       enable = true;
-      luaModules = with pkgs.luaPackages; [
+      luaModules = with pkgs.luajitPackages; [
         luarocks
         luadbi-mysql
+        lgi
       ];
     };
   };
+
+
+  environment.systemPackages = with pkgs; [
+  rofi
+  ];
 }
