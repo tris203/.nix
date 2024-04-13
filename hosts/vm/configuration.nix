@@ -47,6 +47,8 @@
     xkbVariant = "";
   };
 
+  services.gvfs.enable = true;
+
   # Configure console keymap
   console.keyMap = "uk";
 
@@ -71,6 +73,7 @@
   };
 
   services.picom.enable = true;
+  programs.dconf.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

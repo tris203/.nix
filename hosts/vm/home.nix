@@ -91,8 +91,26 @@
             name = "Flat-Remix-Teal-Dark";
             package = pkgs.flat-remix-icon-theme;
           };
+          gtk3 = {
+            extraConfig.gtk-application-prefer-dark-theme = true;
+          };
         };
 
+        dconf.settings = {
+          "org/gnome/desktop/interface" = {
+            name = "Tokyonight-Dark-BL";
+          };
+        };
+
+# TODO: Find out why this doesnt work when set with the config.gtk varibles
+xdg.configFile = {
+  "gtk-4.0/assets".source = 
+  "${pkgs.tokyo-night-gtk}/share/themes/Tokyonight-Dark-BL/gtk-4.0/assets";
+  "gtk-4.0/gtk.css".source = 
+  "${pkgs.tokyo-night-gtk}/share/themes/Tokyonight-Dark-BL/gtk-4.0/gtk.css";
+  "gtk-4.0/gtk-dark.css".source = 
+  "${pkgs.tokyo-night-gtk}/share/themes/Tokyonight-Dark-BL/gtk-4.0/gtk-dark.css";
+};
         # Let Home Manager install and manage itself.
         programs.home-manager.enable = true;
       };
