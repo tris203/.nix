@@ -30,7 +30,12 @@ inputs.nixpkgs.follows = "nixpkgs";
         ./modules/nixos/general.nix
         ./modules/nixos/programming_langs.nix
         ./modules/nixos/terminal_tools.nix
-         inputs.home-manager.nixosModules.default
+         inputs.home-manager.nixosModules.home-manager
+         {
+           home-manager.useGlobalPkgs = true;
+           home-manager.useUserPackages = true;
+           home-manager.users.tris = import ./home.nix;
+         }
       ];
     };
 
@@ -43,8 +48,8 @@ inputs.nixpkgs.follows = "nixpkgs";
         ./modules/nixos/general.nix
         ./modules/nixos/programming_langs.nix
         ./modules/nixos/terminal_tools.nix
-         inputs.home-manager.nixosModules.default
-	 inputs.nixos-wsl.nixosModules.wsl
+        inputs.home-manager.nixosModules.defaults
+	inputs.nixos-wsl.nixosModules.wsl
       ];
     };
 

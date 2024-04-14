@@ -9,8 +9,6 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./home.nix
-      inputs.home-manager.nixosModules.default
     ];
 
 
@@ -23,6 +21,15 @@
 
   nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
   nixpkgs.config.allowUnfree = true;
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  users.users.tris.shell = pkgs.zsh;
+
+
+  nixpkgs.overlays = [
+  inputs.neovim-nightly-overlay.overlay
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

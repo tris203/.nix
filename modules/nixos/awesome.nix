@@ -25,9 +25,4 @@
       ];
     };
   };
-
-
-  environment.systemPackages = with pkgs; [
-  rofi
-  ];
 }

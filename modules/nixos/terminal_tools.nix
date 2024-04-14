@@ -8,7 +8,6 @@
     wget
     curl
     jq
-    alacritty
     tmux
     ripgrep
     fzf
@@ -17,8 +16,5 @@
     xclip
   ];
 
-   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-];
 
 }

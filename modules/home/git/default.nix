@@ -1,12 +1,5 @@
-{ pkgs, inputs, ... }:
-
-
+{ pkgs, ... }:
 {
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "tris" = {
         programs.git = {
           enable = true;
           userName = "tris203";
@@ -18,12 +11,8 @@
           };
           # Other git settings here
         };
-      };
-    };
-  };
-
-
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
+    # Add your packages here
     gh
-  ];
+    ];
 }
