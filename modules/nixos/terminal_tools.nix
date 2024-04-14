@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-  cargo
-  gcc
-  zig
-  clang
+    cargo
+    gcc
+    zig
+    clang
     wget
     curl
     jq

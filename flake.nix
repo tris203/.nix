@@ -10,8 +10,8 @@
     };
 
     nixos-wsl = {
-url = "github:nix-community/NixOS-WSL";
-inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     neovim-nightly-overlay = {
@@ -30,12 +30,12 @@ inputs.nixpkgs.follows = "nixpkgs";
         ./modules/nixos/general.nix
         ./modules/nixos/programming_langs.nix
         ./modules/nixos/terminal_tools.nix
-         inputs.home-manager.nixosModules.home-manager
-         {
-           home-manager.useGlobalPkgs = true;
-           home-manager.useUserPackages = true;
-           home-manager.users.tris = import ./home.nix;
-         }
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.tris = import ./home.nix;
+        }
       ];
     };
 
@@ -49,7 +49,7 @@ inputs.nixpkgs.follows = "nixpkgs";
         ./modules/nixos/programming_langs.nix
         ./modules/nixos/terminal_tools.nix
         inputs.home-manager.nixosModules.defaults
-	inputs.nixos-wsl.nixosModules.wsl
+        inputs.nixos-wsl.nixosModules.wsl
       ];
     };
 

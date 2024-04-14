@@ -1,9 +1,8 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
 
-  
   nixpkgs.overlays = [
-  (import ../../overlays/awesome-git.nix)
+    (import ../../overlays/awesome-git.nix)
   ];
 
   # Enable the X11 windowing system.

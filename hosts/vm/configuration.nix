@@ -28,7 +28,7 @@
 
 
   nixpkgs.overlays = [
-  inputs.neovim-nightly-overlay.overlay
+    inputs.neovim-nightly-overlay.overlay
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
