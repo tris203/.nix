@@ -43,12 +43,15 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/wsl/configuration.nix
-        ./modules/nixos/awesome.nix
-        ./modules/nixos/discord.nix
         ./modules/nixos/general.nix
         ./modules/nixos/programming_langs.nix
         ./modules/nixos/terminal_tools.nix
-        inputs.home-manager.nixosModules.defaults
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.tris = import ./home.nix;
+        }
         inputs.nixos-wsl.nixosModules.wsl
       ];
     };

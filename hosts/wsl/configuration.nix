@@ -13,12 +13,23 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
     ];
 
 
   wsl.enable = true;
-  wsl.defaultUser = "nixos";
+  wsl.defaultUser = "tris";
+
+  programs.dconf.enable = true;
+
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  users.users.tris.shell = pkgs.zsh;
+
+
+  nixpkgs.overlays = [
+    inputs.neovim-nightly-overlay.overlay
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
