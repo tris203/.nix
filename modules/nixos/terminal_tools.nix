@@ -8,12 +8,12 @@
     wget
     curl
     jq
-    tmux
     ripgrep
     fzf
     neofetch
     docker
     xclip
+    tree
   ];
 
 

@@ -4,5 +4,6 @@
     go
     rustc
     nodePackages_latest.nodejs
+    nixpkgs-fmt
   ];
 }
