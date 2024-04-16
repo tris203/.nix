@@ -105,6 +105,6 @@ in
   home.packages = [ tmuxsessionizer ];
 
   # sym link .config/tmux/tmux.conf to ¬/.tmux.conf
-  home.file.".tmux.conf".source =
-    config.lib.file.mkOutOfStoreSymlink "/home/tris/.config/tmux/tmux.conf";
+  # home.file.".tmux.conf".source =
+    # config.lib.file.mkOutOfStoreSymlink "/home/tris/.config/tmux/tmux.conf";
 }
