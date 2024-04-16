@@ -9,7 +9,7 @@
         };
         size = 11;
       };
-      key_bindings = [
+      keyboard.bindings = [
         {
           key = "Numpad0";
           mods = "Control";

@@ -50,8 +50,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "gb";
-    xkbVariant = "";
+    xkb.layout = "gb";
+    xkb.variant = "";
   };
 
   services.gvfs.enable = true;
