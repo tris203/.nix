@@ -14,7 +14,14 @@
 
   # Use thfigcne systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 7;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  gc = {
+    automatic = true;
+    dates = [ "weekly" "monthly" ];
+    options = "--delete-older-than 14d";
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
