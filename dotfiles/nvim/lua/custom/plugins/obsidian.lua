@@ -1,32 +1,12 @@
-local function getPath()
-  --check hostname for different paths
-  local path
-  -- local hostname = vim.loop.os_gethostname()
-  -- if hostname == 'pop-os' then
-  path = '~/Obsidian/Home'
-  -- else
-  -- path = '/tmp/obsidian'
-  -- end
-  -- print(path)
-  return path
-end
-
+local opath = '~/Obsidian/Home'
 local function pathExists(path)
-  local stat = vim.loop.fs_stat(path)
-  if stat then
-    return true
-  else
-    return false
-  end
+  return vim.fn.isdirectory(vim.fn.expand(path)) ~= nil
 end
 
 return {
   'epwalsh/obsidian.nvim',
   cmd = { 'ObsidianOpen', 'ObsidianSearch', 'ObsidianQuickSwitch', 'ObsidianNew' },
-  enabled = function()
-    return pathExists(getPath())
-  end,
-  event = 'VeryLazy',
+  enabled = pathExists(opath),
   version = '*', -- recommended, use latest release instead of latest commit
   keys = {
     { '<leader>of', '<cmd>ObsidianQuickSwitch<cr>' },
@@ -58,7 +38,7 @@ return {
     workspaces = {
       {
         name = 'Home',
-        path = getPath(),
+        path = opath,
       },
     },
     note_id_func = function(title)
