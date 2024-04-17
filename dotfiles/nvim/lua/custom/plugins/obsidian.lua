@@ -3,17 +3,29 @@ local function getPath()
   local path
   -- local hostname = vim.loop.os_gethostname()
   -- if hostname == 'pop-os' then
-    path = '~/Obsidian/Home'
+  path = '~/Obsidian/Home'
   -- else
-    -- path = '/tmp/obsidian'
+  -- path = '/tmp/obsidian'
   -- end
   -- print(path)
   return path
 end
 
+local function pathExists(path)
+  local stat = vim.loop.fs_stat(path)
+  if stat then
+    return true
+  else
+    return false
+  end
+end
+
 return {
   'epwalsh/obsidian.nvim',
   cmd = { 'ObsidianOpen', 'ObsidianSearch', 'ObsidianQuickSwitch', 'ObsidianNew' },
+  enabled = function()
+    return pathExists(getPath())
+  end,
   event = 'VeryLazy',
   version = '*', -- recommended, use latest release instead of latest commit
   keys = {
@@ -49,21 +61,21 @@ return {
         path = getPath(),
       },
     },
-      note_id_func = function(title)
-        -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
-        -- In this case a note with the title 'My new note' will be given an ID that looks
-        -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-        local suffix = ''
-        if title ~= nil then
-          -- If title is given, transform it into valid file name.
-          suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
-        else
-          -- If title is nil, just add 4 random uppercase letters to the suffix.
-          for _ = 1, 4 do
-            suffix = suffix .. string.char(math.random(65, 90))
-          end
+    note_id_func = function(title)
+      -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+      -- In this case a note with the title 'My new note' will be given an ID that looks
+      -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
+      local suffix = ''
+      if title ~= nil then
+        -- If title is given, transform it into valid file name.
+        suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+      else
+        -- If title is nil, just add 4 random uppercase letters to the suffix.
+        for _ = 1, 4 do
+          suffix = suffix .. string.char(math.random(65, 90))
         end
-        return tostring(os.time()) .. '-' .. suffix
-      end,
+      end
+      return tostring(os.time()) .. '-' .. suffix
+    end,
   },
 }
