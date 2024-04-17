@@ -1,6 +1,6 @@
 local opath = '~/Obsidian/Home'
 local function pathExists(path)
-  return vim.fn.isdirectory(vim.fn.expand(path)) ~= nil
+  return vim.loop.fs_stat(vim.fn.expand(path)) ~= nil
 end
 
 return {
