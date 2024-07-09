@@ -28,7 +28,7 @@
 
 
   nixpkgs.overlays = [
-    inputs.neovim-nightly-overlay.overlay
+    inputs.neovim-nightly-overlay.overlays.default
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

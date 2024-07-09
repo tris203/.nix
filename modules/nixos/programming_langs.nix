@@ -14,7 +14,7 @@
     docker-compose-language-service
     dockerfile-language-server-nodejs
     gopls
-    nodePackages_latest.vscode-html-languageserver-bin
+    vscode-langservers-extracted
     htmx-lsp
     lua-language-server
     markdownlint-cli2
@@ -33,6 +33,6 @@
     yamllint
 
     # Tools
-    nodePackages_latest.pnpm
+    pnpm
   ];
 }

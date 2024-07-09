@@ -10,7 +10,7 @@
     jq
     ripgrep
     fzf
-    neofetch
+    fastfetch
     docker
     xclip
     tree

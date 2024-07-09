@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    gnome.nautilus
-    gnome.gnome-screenshot
+    nautilus
+    gnome-screenshot
     calibre
     obsidian
     spotify
