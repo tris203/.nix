@@ -34,5 +34,7 @@
 
     # Tools
     pnpm
+    sqlite
+    luarocks
   ];
 }
