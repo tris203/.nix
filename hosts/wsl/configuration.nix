@@ -26,6 +26,10 @@
   users.defaultUserShell = pkgs.zsh;
   users.users.tris.shell = pkgs.zsh;
 
+  services.automatic-timezoned.enable = true;
+
+  time.timeZone = "Europe/Guernsey";
+
 
   nixpkgs.overlays = [
     inputs.neovim-nightly-overlay.overlays.default
