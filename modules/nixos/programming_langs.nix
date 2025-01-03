@@ -7,6 +7,7 @@
     nodePackages_latest.nodejs
     luajit
     dotnet-sdk_8
+    gnumake
 
     # LSPs
     nodePackages_latest.bash-language-server
@@ -31,10 +32,39 @@
     prettierd
     stylua
     yamllint
+    proselint
+
+    # GoTools
+    gofumpt
+    golines
+    golangci-lint
+    gotools
+    gomodifytags
+    gotests
+    iferr
+    impl
+    reftools
+    ginkgo
+    richgo
+    gotestsum
+    mockgen
+    govulncheck
+    templ
+    air
+
+    # Protobuf
+    protobuf
+    protoc-gen-go
+    protoc-gen-go-grpc
 
     # Tools
     pnpm
     sqlite
     luarocks
   ];
+
+   # environment.variables = {
+  #   LIBSQLITE = "${pkgs.sqlite}/lib/libsqlite3.so";
+  # };
+
 }
