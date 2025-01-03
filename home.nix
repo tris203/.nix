@@ -2,7 +2,7 @@
 
 {
   imports = [
-  ./modules/home/alacritty
+  ./modules/home/ghostty
   ./modules/home/git
   ./modules/home/nvim
   ./modules/home/zsh

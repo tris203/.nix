@@ -9,12 +9,23 @@
 
 
   services.displayManager = {
-    sddm.enable = true;
     defaultSession = "none+awesome";
   };
 
   services.xserver = {
     enable = true;
+    displayManager.lightdm = {
+      enable = true;
+      greeters = {
+        gtk = {
+          enable = true;
+          theme = {
+            name = "Tokyonight-Dark-BL";
+            package = pkgs.tokyo-night-gtk;
+          };
+        };
+      };
+    };
 
 
     windowManager.awesome = {

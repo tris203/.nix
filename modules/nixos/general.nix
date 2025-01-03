@@ -4,7 +4,7 @@
     nautilus
     gnome-screenshot
     calibre
-    obsidian
+    # obsidian
     spotify
     vscode
     tokyo-night-gtk

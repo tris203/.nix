@@ -35,7 +35,7 @@
 
 
   nixpkgs.overlays = [
-    inputs.neovim-nightly-overlay.overlay
+    inputs.neovim-nightly-overlay.overlays.default
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -70,7 +70,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -86,7 +86,7 @@
     #media-session.enable = true;
   };
 
-  services.picom.enable = true;
+  # services.picom.enable = true;
   programs.dconf.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).

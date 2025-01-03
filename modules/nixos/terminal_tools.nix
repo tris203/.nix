@@ -13,7 +13,9 @@
     fastfetch
     docker
     xclip
+    wl-clipboard
     tree
+    htop
   ];
 
 
