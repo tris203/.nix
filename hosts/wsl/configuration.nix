@@ -9,37 +9,28 @@
 
 {
 
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   wsl.enable = true;
   wsl.defaultUser = "tris";
 
   programs.dconf.enable = true;
 
-
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.tris.shell = pkgs.zsh;
 
-  services.automatic-timezoned.enable = true;
-
   time.timeZone = "Europe/Guernsey";
 
-
-  nixpkgs.overlays = [
-    inputs.neovim-nightly-overlay.overlays.default
-  ];
+  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
   nixpkgs.config.allowUnfree = true;
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

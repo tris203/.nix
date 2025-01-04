@@ -18,9 +18,7 @@
       url = "github:nix-community/neovim-nightly-overlay";
     };
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-    };
+    nixos-cosmic = { url = "github:lilyinstarlight/nixos-cosmic"; };
 
   };
 
@@ -41,7 +39,9 @@
         {
           nix.settings = {
             substituters = [ "https://cosmic.cachix.org/" ];
-            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+            trusted-public-keys = [
+              "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+            ];
           };
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

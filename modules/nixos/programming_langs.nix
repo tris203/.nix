@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     # Interpreters/Compilers
     go
@@ -63,7 +62,7 @@
     luarocks
   ];
 
-   # environment.variables = {
+  # environment.variables = {
   #   LIBSQLITE = "${pkgs.sqlite}/lib/libsqlite3.so";
   # };
 

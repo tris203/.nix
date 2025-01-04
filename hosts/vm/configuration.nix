@@ -5,12 +5,10 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use thfigcne systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -25,7 +23,6 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-
   nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
   nixpkgs.config.allowUnfree = true;
 
@@ -33,10 +30,7 @@
   users.defaultUserShell = pkgs.zsh;
   users.users.tris.shell = pkgs.zsh;
 
-
-  nixpkgs.overlays = [
-    inputs.neovim-nightly-overlay.overlays.default
-  ];
+  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -53,7 +47,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
-
 
   # Configure keymap in X11
   services.xserver = {
@@ -97,10 +90,11 @@
     isNormalUser = true;
     description = "Tris";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        firefox
+        #  thunderbird
+      ];
   };
 
   # home-manager = {
@@ -110,14 +104,14 @@
   # };
   # };
 
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    google-chrome
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      google-chrome
+      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      #  wget
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
