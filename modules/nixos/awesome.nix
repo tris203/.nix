@@ -1,10 +1,16 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
-  nixpkgs.overlays = [ (import ../../overlays/awesome-git.nix) ];
+  nixpkgs.overlays = [
+    (import ../../overlays/awesome-git.nix)
+  ];
 
   # Enable the X11 windowing system.
 
-  services.displayManager = { defaultSession = "none+awesome"; };
+
+  services.displayManager = {
+    defaultSession = "none+awesome";
+  };
 
   services.xserver = {
     enable = true;
@@ -21,10 +27,15 @@
       };
     };
 
+
     windowManager.awesome = {
       package = pkgs.awesome-luajit-git;
       enable = true;
-      luaModules = with pkgs.luajitPackages; [ luarocks luadbi-mysql lgi ];
+      luaModules = with pkgs.luajitPackages; [
+        luarocks
+        luadbi-mysql
+        lgi
+      ];
     };
   };
 }

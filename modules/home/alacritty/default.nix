@@ -4,14 +4,18 @@
     settings = {
       window.opacity = 0.95;
       font = {
-        normal = { family = "Jetbrainsmono NerdFont"; };
+        normal = {
+          family = "Jetbrainsmono NerdFont";
+        };
         size = 11;
       };
-      keyboard.bindings = [{
-        key = "Numpad0";
-        mods = "Control";
-        action = "ResetFontSize";
-      }];
+      keyboard.bindings = [
+        {
+          key = "Numpad0";
+          mods = "Control";
+          action = "ResetFontSize";
+        }
+      ];
       colors = {
         primary = {
           background = "#1a1b26";

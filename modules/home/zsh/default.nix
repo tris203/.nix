@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }:
 let
-  tmuxsessionizer =
-    pkgs.writeShellScriptBin "tmuxsessionizer" ./bin/tmux-sessionizer;
-in {
+  tmuxsessionizer = pkgs.writeShellScriptBin "tmuxsessionizer" ./bin/tmux-sessionizer;
+in
+{
 
   programs.tmux = {
     enable = true;
@@ -10,6 +10,7 @@ in {
     keyMode = "vi";
     mouse = true;
     baseIndex = 1;
+
 
     plugins = [
       pkgs.tmuxPlugins.prefix-highlight
@@ -69,7 +70,9 @@ in {
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    shellAliases = { "ll" = "ls -alh"; };
+    shellAliases = {
+      "ll" = "ls -alh";
+    };
     plugins = [
       {
         name = "powerlevel10k";
@@ -84,7 +87,14 @@ in {
     ];
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "gh" "tmux" "sudo" "colorize" "colored-man-pages" ];
+      plugins = [
+        "git"
+        "gh"
+        "tmux"
+        "sudo"
+        "colorize"
+        "colored-man-pages"
+      ];
       extraConfig = ''
         ZSH_TMUX_AUTOSTART=true
         ZSH_TMUX_DEFAULT_SESSION_NAME=main
@@ -96,5 +106,5 @@ in {
 
   # sym link .config/tmux/tmux.conf to ¬/.tmux.conf
   # home.file.".tmux.conf".source =
-  # config.lib.file.mkOutOfStoreSymlink "/home/tris/.config/tmux/tmux.conf";
+    # config.lib.file.mkOutOfStoreSymlink "/home/tris/.config/tmux/tmux.conf";
 }

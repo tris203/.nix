@@ -1,6 +1,7 @@
-{ pkgs, ... }: {
-  environment.systemPackages = [
-    (pkgs.discord.override {
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    (discord.override {
       withVencord = true;
       withOpenASAR = true;
     })
