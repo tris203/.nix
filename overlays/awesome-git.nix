@@ -14,8 +14,7 @@ let
         date = "2024-03-23";
       };
       extraGIPackages = with pkgs; [ networkmanager upower playerctl ];
-    in
-    (pkgs.awesome.override { gtk3Support = true; }).overrideAttrs (old: {
+    in (pkgs.awesome.override { gtk3Support = true; }).overrideAttrs (old: {
       inherit (package) src version;
 
       patches = [ ];
@@ -27,15 +26,13 @@ let
 
       cmakeFlags = old.cmakeFlags ++ [ "-DGENERATE_MANPAGES=OFF" ];
 
-      GI_TYPELIB_PATH =
-        let
-          mkTypeLibPath = pkg: "${pkg}/lib/girepository-1.0";
-          extraGITypeLibPaths = prev.lib.forEach extraGIPackages mkTypeLibPath;
-        in
-        prev.lib.concatStringsSep ":" (extraGITypeLibPaths ++ [ (mkTypeLibPath prev.pango.out) ]);
+      GI_TYPELIB_PATH = let
+        mkTypeLibPath = pkg: "${pkg}/lib/girepository-1.0";
+        extraGITypeLibPaths = prev.lib.forEach extraGIPackages mkTypeLibPath;
+      in prev.lib.concatStringsSep ":"
+      (extraGITypeLibPaths ++ [ (mkTypeLibPath prev.pango.out) ]);
     });
-in
-{
+in {
   awesome-git = mkAwesome "awesome" prev;
 
   awesome-luajit-git = final.awesome-git.override {

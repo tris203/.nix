@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     cargo
     gcc
@@ -17,6 +16,5 @@
     tree
     htop
   ];
-
 
 }

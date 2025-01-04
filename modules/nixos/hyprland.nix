@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
-
 
   hardware.opengl.enable = true;
 
@@ -12,13 +10,9 @@
 
   services.displayManager.sddm.enable = true;
 
-  services.xserver = {
-    enable = true;
-  };
+  services.xserver = { enable = true; };
 
-  environment.sessionVariables = {
-    WLR_RENDERER_ALLOW_SOFTWARE = "1";
-  };
+  environment.sessionVariables = { WLR_RENDERER_ALLOW_SOFTWARE = "1"; };
 
   environment.systemPackages = with pkgs; [
     kitty
