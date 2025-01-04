@@ -8,6 +8,7 @@
     ./modules/home/zsh
     ./modules/home/rofi
     ./modules/home/theme
+    ./modules/home/chrome
   ];
 
   home.username = "tris";
