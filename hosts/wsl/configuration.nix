@@ -25,7 +25,10 @@
 
   time.timeZone = "Europe/Guernsey";
 
-  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+  nixpkgs.overlays = [
+    inputs.neovim-nightly-overlay.overlays.default
+    inputs.rzls.overlay
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

@@ -20,6 +20,8 @@
 
     nixos-cosmic = { url = "github:lilyinstarlight/nixos-cosmic"; };
 
+    rzls.url = "path:./pkgs/rzls/";
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {

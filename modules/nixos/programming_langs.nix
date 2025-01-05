@@ -23,6 +23,7 @@
     tailwindcss-language-server
     templ
     nodePackages_latest.typescript-language-server
+    rzls
 
     # Linter/Formatter
     eslint_d

@@ -30,7 +30,10 @@
   users.defaultUserShell = pkgs.zsh;
   users.users.tris.shell = pkgs.zsh;
 
-  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+  nixpkgs.overlays = [
+    inputs.neovim-nightly-overlay.overlays.default
+    inputs.rzls.overlay
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
