@@ -60,6 +60,7 @@
     pnpm
     sqlite
     luarocks
+    scc
   ];
 
   # environment.variables = {

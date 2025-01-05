@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.chromium = {
     enable = true;
-    package = pkgs.google-chrome;
+    package = pkgs.brave;
     extensions = [
       { id = "nngceckbapebfimnlniiiahkandclblb"; } #bitwarden
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } #dark reader
