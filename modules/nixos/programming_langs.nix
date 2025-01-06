@@ -63,8 +63,8 @@
     scc
   ];
 
-  # environment.variables = {
-  #   LIBSQLITE = "${pkgs.sqlite}/lib/libsqlite3.so";
-  # };
+  environment.variables = {
+    LIBSQLITE = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+  };
 
 }
