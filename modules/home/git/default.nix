@@ -8,8 +8,8 @@
       gpg.format = "ssh";
       user.signingkey = "~/.ssh/github.pub";
       credential = {
-        "https://github,com" = { helper = "!gh auth git-credential"; };
-        "https://gist.github,com" = { helper = "!gh auth git-credential"; };
+        "https://github.com" = { helper = "!gh auth git-credential"; };
+        "https://gist.github.com" = { helper = "!gh auth git-credential"; };
       };
     };
   };
