@@ -1,5 +1,8 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+
+    direnv
+
     # Interpreters/Compilers
     go
     rustc
@@ -10,7 +13,7 @@
 
     # LSPs
     nodePackages_latest.bash-language-server
-    biome
+    # biome
     docker-compose-language-service
     dockerfile-language-server-nodejs
     gopls
@@ -62,6 +65,8 @@
     luarocks
     scc
   ];
+
+  programs.direnv.enable = true;
 
   environment.variables = {
     LIBSQLITE = "${pkgs.sqlite.out}/lib/libsqlite3.so";

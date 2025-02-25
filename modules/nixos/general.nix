@@ -7,5 +7,6 @@
     spotify
     vscode
     tokyo-night-gtk
+    firefox
   ];
 }

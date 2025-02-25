@@ -56,6 +56,39 @@
       ];
     };
 
+    nixosConfigurations.x1 = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/x1/configuration.nix
+        # ./modules/nixos/awesome.nix
+        ./modules/nixos/gnome.nix
+        # ./modules/nixos/hyprland.nix
+        ./modules/nixos/cosmic.nix
+        ./modules/nixos/discord.nix
+        ./modules/nixos/general.nix
+        ./modules/nixos/programming_langs.nix
+        ./modules/nixos/terminal_tools.nix
+        inputs.home-manager.nixosModules.home-manager
+        {
+          nix.settings = {
+            substituters = [
+              "https://cosmic.cachix.org/"
+              "https://nix-community.cachix.org"
+            ];
+            trusted-public-keys = [
+              "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+              "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+            ];
+          };
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hmbkp";
+          home-manager.users.tris = import ./home.nix;
+        }
+        inputs.nixos-cosmic.nixosModules.default
+      ];
+    };
+
     nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [

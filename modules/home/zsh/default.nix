@@ -2,7 +2,8 @@
 let
   tmuxsessionizer =
     pkgs.writeShellScriptBin "tmuxsessionizer" ./bin/tmux-sessionizer;
-in {
+in
+{
 
   programs.tmux = {
     enable = true;
@@ -84,7 +85,7 @@ in {
     ];
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "gh" "tmux" "sudo" "colorize" "colored-man-pages" ];
+      plugins = [ "git" "gh" "tmux" "sudo" "colorize" "colored-man-pages" "direnv" ];
       extraConfig = ''
         ZSH_TMUX_AUTOSTART=true
         ZSH_TMUX_DEFAULT_SESSION_NAME=main
