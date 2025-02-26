@@ -2,9 +2,10 @@
   environment.systemPackages = with pkgs; [
 
     direnv
+    wakatime-cli
 
     # Interpreters/Compilers
-    go
+    # go
     rustc
     nodePackages_latest.nodejs
     luajit
@@ -30,29 +31,29 @@
     # Linter/Formatter
     eslint_d
     luajitPackages.luacheck
-    nixpkgs-fmt
+    # nixpkgs-fmt
     prettierd
     stylua
     yamllint
     proselint
 
     # GoTools
-    gofumpt
-    golines
-    golangci-lint
-    gotools
-    gomodifytags
-    gotests
-    iferr
-    impl
-    reftools
-    ginkgo
-    richgo
-    gotestsum
-    mockgen
-    govulncheck
-    templ
-    air
+    # gofumpt
+    # golines
+    # golangci-lint
+    # gotools
+    # gomodifytags
+    # gotests
+    # iferr
+    # impl
+    # reftools
+    # ginkgo
+    # richgo
+    # gotestsum
+    # mockgen
+    # govulncheck
+    # templ
+    # air
 
     # Protobuf
     protobuf

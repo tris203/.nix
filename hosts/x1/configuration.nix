@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-       nix.settings.trusted-users = [ "root" "tris" ];
+  nix.settings.trusted-users = [ "root" "tris" ];
 
   nix.gc = {
     automatic = true;
@@ -35,6 +35,12 @@
 
   nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
 
+  services.tailscale.enable = true;
+
+  networking.firewall.allowedUDPPorts = [ config.services.tailscale.port ];
+
+  environment.systemPackages = with pkgs; [ tailscale ];
+
   services.kanata = {
     enable = true;
     keyboards = {
@@ -48,7 +54,7 @@
            caps a s d f j k l ;
           )
           (defvar
-           tap-time 150
+           tap-time 200
            hold-time 200
           )
           (defalias
