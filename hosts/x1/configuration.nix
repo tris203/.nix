@@ -54,11 +54,11 @@
            caps a s d f j k l ;
           )
           (defvar
-           tap-time 200
+           tap-time 150
            hold-time 200
           )
           (defalias
-           caps (tap-hold 100 100 esc lctl)
+           caps (tap-hold 100 100 esc esc)
            a (tap-hold $tap-time $hold-time a lmet)
            s (tap-hold $tap-time $hold-time s lalt)
            d (tap-hold $tap-time $hold-time d lctl)
