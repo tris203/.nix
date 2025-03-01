@@ -4,12 +4,17 @@
     direnv
     wakatime-cli
 
+    copilot-language-server
+
+    roslyn-ls
+    rzls
+
     # Interpreters/Compilers
     # go
     rustc
     nodePackages_latest.nodejs
     luajit
-    dotnet-sdk_8
+    dotnet-sdk_9
     gnumake
 
     # LSPs
@@ -31,7 +36,8 @@
     # Linter/Formatter
     eslint_d
     luajitPackages.luacheck
-    # nixpkgs-fmt
+    nixpkgs-fmt
+    nixd
     prettierd
     stylua
     yamllint
