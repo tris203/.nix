@@ -2,14 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
+{ pkgs, ... }:
+let
+  internalKeyboardDevice = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+  tapTime = 150;
+  holdTime = 200;
+in
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-
 
       # ./modules/nixos/awesome.nix
       ../../modules/nixos/gnome.nix
@@ -19,12 +22,15 @@
       ../../modules/nixos/general.nix
       ../../modules/nixos/programming_langs.nix
       ../../modules/nixos/terminal_tools.nix
+      ../../modules/nixos/tailscale.nix
+      (import ../../modules/nixos/kanata.nix {
+        inherit internalKeyboardDevice tapTime holdTime;
+      })
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
 
   nix.settings.trusted-users = [ "root" "tris" ];
 
@@ -42,49 +48,6 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.tris.shell = pkgs.zsh;
-
-  services.tailscale.enable = true;
-
-  networking.firewall.allowedUDPPorts = [ config.services.tailscale.port ];
-
-  environment.systemPackages = with pkgs; [ tailscale ];
-
-  services.kanata = {
-    enable = true;
-    keyboards = {
-      internalKeyboard = {
-        devices = [
-          "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-        ];
-        extraDefCfg = "process-unmapped-keys yes";
-        config = ''
-          (defsrc
-           caps a s d f j k l ;
-          )
-          (defvar
-           tap-time 150
-           hold-time 200
-          )
-          (defalias
-           caps (tap-hold 100 100 esc esc)
-           a (tap-hold $tap-time $hold-time a lmet)
-           s (tap-hold $tap-time $hold-time s lalt)
-           d (tap-hold $tap-time $hold-time d lctl)
-           f (tap-hold $tap-time $hold-time f lsft)
-           j (tap-hold $tap-time $hold-time j rsft)
-           k (tap-hold $tap-time $hold-time k rctl)
-           l (tap-hold $tap-time $hold-time l ralt)
-           ; (tap-hold $tap-time $hold-time ; rmet)
-          )
-
-          (deflayer base
-           @caps @a  @s  @d  @f  @j  @k  @l  @;
-          )
-        '';
-      };
-    };
-  };
-
 
   networking.hostName = "x1"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -145,46 +108,7 @@
     isNormalUser = true;
     description = "Tris";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
   };
-
-  #   # Install firefox.
-  #   programs.firefox.enable = true;
-  # programs.git.enable = true;
-  # programs.neovim.enable = true;
-  #   # Allow unfree packages
-  #   nixpkgs.config.allowUnfree = true;
-  #
-  #   nix.settings.experimental-features = 
-  #   ["nix-command" "flakes"];
-  #
-  #   # List packages installed in system profile. To search, run:
-  #   # $ nix search wget
-  #   environment.systemPackages = with pkgs; [
-  #   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   #  wget
-  #   ];
-  #
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

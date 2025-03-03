@@ -70,7 +70,6 @@
             home-manager.backupFileExtension = "hmbkp";
             home-manager.users.tris = import ./home.nix;
           }
-          inputs.nixos-cosmic.nixosModules.default
         ];
       };
 
@@ -90,7 +89,6 @@
             home-manager.backupFileExtension = "hmbkp";
             home-manager.users.tris = import ./home.nix;
           }
-          inputs.nixos-cosmic.nixosModules.default
         ];
       };
 

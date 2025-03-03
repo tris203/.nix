@@ -15,7 +15,6 @@
   environment.sessionVariables = { WLR_RENDERER_ALLOW_SOFTWARE = "1"; };
 
   environment.systemPackages = with pkgs; [
-    kitty
     waybar
     dunst
     libnotify
