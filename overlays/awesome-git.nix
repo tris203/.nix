@@ -1,6 +1,6 @@
 final: prev:
 let
-  mkAwesome = name: pkgs:
+  mkAwesome = _name: pkgs:
     let
       package = {
         version = "8b1f8958b46b3e75618bc822d512bb4d449a89aa";
