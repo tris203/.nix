@@ -9,6 +9,16 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+
+      # ./modules/nixos/awesome.nix
+      ../../modules/nixos/gnome.nix
+      # ./modules/nixos/hyprland.nix
+      ../../modules/nixos/cosmic.nix
+      ../../modules/nixos/discord.nix
+      ../../modules/nixos/general.nix
+      ../../modules/nixos/programming_langs.nix
+      ../../modules/nixos/terminal_tools.nix
     ];
 
   # Bootloader.
@@ -32,8 +42,6 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.tris.shell = pkgs.zsh;
-
-  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
 
   services.tailscale.enable = true;
 

@@ -12,6 +12,11 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+
+    ../../modules/nixos/general.nix
+    ../../modules/nixos/programming_langs.nix
+    ../../modules/nixos/terminal_tools.nix
   ];
 
   wsl.enable = true;
@@ -24,8 +29,6 @@
   users.users.tris.shell = pkgs.zsh;
 
   time.timeZone = "Europe/Guernsey";
-
-  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

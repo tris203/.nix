@@ -8,6 +8,16 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+
+          # ./modules/nixos/awesome.nix
+          ../../modules/nixos/gnome.nix
+          # ./modules/nixos/hyprland.nix
+          ../../modules/nixos/cosmic.nix
+          ../../modules/nixos/discord.nix
+          ../../modules/nixos/general.nix
+          ../../modules/nixos/programming_langs.nix
+          ../../modules/nixos/terminal_tools.nix
   ];
 
   # Use thfigcne systemd-boot EFI boot loader.
@@ -29,8 +39,6 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.tris.shell = pkgs.zsh;
-
-  nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -64,7 +72,7 @@
 
   # Enable sound with pipewire.
   # sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
