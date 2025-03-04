@@ -39,75 +39,34 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
 
-
-      overlays = [
-        inputs.neovim-nightly-overlay.overlays.default
-        (import ./overlays/awesome-git.nix)
-      ];
-      substituters = [
-        "https://cosmic.cachix.org/"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
+      common = import ./hosts/common.nix { inherit inputs nixpkgs; };
     in
     {
       nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/vm/configuration.nix
           inputs.home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = overlays;
-            nix.settings = {
-              substituters = substituters;
-              trusted-public-keys = trusted-public-keys;
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "hmbkp";
-            home-manager.users.tris = import ./home.nix;
-          }
+          common
+          ./hosts/vm/configuration.nix
         ];
       };
 
       nixosConfigurations.x1 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/x1/configuration.nix
           inputs.home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = overlays;
-            nix.settings = {
-              substituters = substituters;
-              trusted-public-keys = trusted-public-keys;
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "hmbkp";
-            home-manager.users.tris = import ./home.nix;
-          }
+          common
+          ./hosts/x1/configuration.nix
         ];
       };
 
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/wsl/configuration.nix
           inputs.home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = overlays;
-            nix.settings = {
-              substituters = substituters;
-              trusted-public-keys = trusted-public-keys;
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.tris = import ./home.nix;
-          }
           inputs.nixos-wsl.nixosModules.wsl
+          common
+          ./hosts/wsl/configuration.nix
         ];
       };
 

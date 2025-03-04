@@ -34,17 +34,6 @@ in
 
   nix.settings.trusted-users = [ "root" "tris" ];
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 14d";
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
-  nixpkgs.config.allowUnfree = true;
-
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.tris.shell = pkgs.zsh;
