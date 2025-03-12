@@ -1,26 +1,50 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   hardware.opengl.enable = true;
 
   hardware.nvidia.modesetting.enable = true;
 
-  services.displayManager.sddm.enable = true;
+  services.blueman.enable = true;
 
-  services.xserver = { enable = true; };
+  services.xserver = {
+    enable = true;
+    displayManager = { gdm = { enable = true; wayland = true; }; };
+  };
 
-  environment.sessionVariables = { WLR_RENDERER_ALLOW_SOFTWARE = "1"; };
+  environment.sessionVariables = {
+    WLR_RENDERER_ALLOW_SOFTWARE = "1";
+    NIXOS_ONZONE_WL = "1";
+  };
 
   environment.systemPackages = with pkgs; [
+    networkmanagerapplet
     waybar
-    dunst
+    # dunst
     libnotify
     swww
     rofi-wayland
+    brightnessctl
+    cliphist
+    swaynotificationcenter
+    hyprshot
+    hyprlock
+    hypridle
+    hyprpaper
+    hyprsunset
   ];
+
+  programs.waybar = {
+    enable = true;
+
+  };
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [

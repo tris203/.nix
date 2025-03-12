@@ -15,9 +15,9 @@ in
       ./hardware-configuration.nix
 
       # ./modules/nixos/awesome.nix
-      ../../modules/nixos/gnome.nix
-      # ./modules/nixos/hyprland.nix
-      ../../modules/nixos/cosmic.nix
+      # ../../modules/nixos/gnome.nix
+      ../../modules/nixos/hyprland.nix
+      # ../../modules/nixos/cosmic.nix
       ../../modules/nixos/discord.nix
       ../../modules/nixos/general.nix
       ../../modules/nixos/programming_langs.nix
@@ -38,6 +38,13 @@ in
   users.defaultUserShell = pkgs.zsh;
   users.users.tris.shell = pkgs.zsh;
 
+  hardware.bluetooth = {
+    package = pkgs.bluez;
+    enable = true;
+    settings = { General = { Experimental = true; }; };
+  };
+
+
   networking.hostName = "x1"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -55,11 +62,11 @@ in
   i18n.defaultLocale = "en_GB.UTF-8";
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

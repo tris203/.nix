@@ -9,6 +9,8 @@
     roslyn-ls
     rzls
 
+    gcc
+
     # Interpreters/Compilers
     # go
     rustc
