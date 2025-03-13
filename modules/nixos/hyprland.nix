@@ -21,7 +21,7 @@
 
   environment.sessionVariables = {
     WLR_RENDERER_ALLOW_SOFTWARE = "1";
-    NIXOS_ONZONE_WL = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   environment.systemPackages = with pkgs; [
