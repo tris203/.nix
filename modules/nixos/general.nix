@@ -8,7 +8,5 @@
     calibre
     obsidian
     spotify
-    vscode
-    tokyo-night-gtk
   ];
 }

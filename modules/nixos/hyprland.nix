@@ -27,24 +27,17 @@
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
     waybar
-    # dunst
     libnotify
     swww
     rofi-wayland
     brightnessctl
     cliphist
-    swaynotificationcenter
     hyprshot
     hyprlock
     hypridle
     hyprpaper
     hyprsunset
   ];
-
-  programs.waybar = {
-    enable = true;
-
-  };
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [

@@ -2,6 +2,8 @@
 
 {
   imports = [
+
+    ./modules/home/general
     ./modules/home/ghostty
     ./modules/home/git
     ./modules/home/nvim

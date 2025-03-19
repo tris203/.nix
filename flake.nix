@@ -39,6 +39,11 @@
       url = "github:0xc000022070/zen-browser-flake";
     };
 
+    stylix = {
+      url = "github:danth/stylix";
+    };
+
+
   };
 
   outputs = { nixpkgs, ... }@inputs:
@@ -53,6 +58,7 @@
       nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          inputs.stylix.nixosModules.stylix
           inputs.home-manager.nixosModules.home-manager
           common
           ./hosts/vm/configuration.nix
@@ -62,6 +68,7 @@
       nixosConfigurations.x1 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          inputs.stylix.nixosModules.stylix
           inputs.home-manager.nixosModules.home-manager
           common
           ./hosts/x1/configuration.nix
@@ -71,6 +78,7 @@
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          inputs.stylix.nixosModules.stylix
           inputs.home-manager.nixosModules.home-manager
           inputs.nixos-wsl.nixosModules.wsl
           common
