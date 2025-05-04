@@ -4,7 +4,7 @@
     direnv
     wakatime-cli
 
-    copilot-language-server
+    copilot-language-server-fhs
 
     roslyn-ls
     rzls
@@ -73,6 +73,7 @@
     sqlite
     luarocks
     scc
+    tree-sitter
   ];
 
   programs.direnv.enable = true;
