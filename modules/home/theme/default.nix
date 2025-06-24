@@ -12,6 +12,7 @@
   stylix.polarity = "dark";
 
   stylix.targets.neovim.enable = false;
+  stylix.targets.neovide.enable = false;
   stylix.image = ./wallpaper.jpg;
 
   stylix.opacity = {

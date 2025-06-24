@@ -14,10 +14,7 @@
 
   services.blueman.enable = true;
 
-  services.xserver = {
-    enable = true;
-    displayManager = { gdm = { enable = true; wayland = true; }; };
-  };
+  services.displayManager = { gdm = { enable = true; wayland = true; }; };
 
   environment.sessionVariables = {
     WLR_RENDERER_ALLOW_SOFTWARE = "1";
