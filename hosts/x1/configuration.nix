@@ -14,7 +14,7 @@ in
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
-      ./theme.nix
+      ../theme.nix
 
       # ./modules/nixos/awesome.nix
       # ../../modules/nixos/gnome.nix
