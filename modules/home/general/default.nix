@@ -52,6 +52,7 @@
         };
       };
     };
+    style = ./swaync-style.css;
 
   };
 }
