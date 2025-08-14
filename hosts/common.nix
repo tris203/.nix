@@ -1,7 +1,7 @@
 { inputs, ... }:
 let
   overlays = [
-    inputs.neovim-nightly-overlay.overlays.default
+    # inputs.neovim-nightly-overlay.overlays.default
     (import ../overlays/awesome-git.nix)
   ];
   substituters = [
