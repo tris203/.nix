@@ -10,10 +10,12 @@
 {
 
   imports = [
+    ../common.nix
+
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-      ../theme.nix
+    ../theme.nix
 
     ../../modules/nixos/general.nix
     ../../modules/nixos/programming_langs.nix
