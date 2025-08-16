@@ -8,5 +8,6 @@
     calibre
     obsidian
     spotify
+    nh
   ];
 }
