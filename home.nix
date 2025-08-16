@@ -3,6 +3,8 @@
 {
   imports = [
 
+    ./modules/home/dots
+
     ./modules/home/general
     ./modules/home/ghostty
     ./modules/home/git
