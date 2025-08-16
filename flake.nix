@@ -46,6 +46,7 @@
       supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
+      commonConfig = import ./hosts/common.nix;
     in
     rec {
       legacyPackages = nixpkgs.lib.genAttrs [ "x86_64-linux" "x86_64-darwin" ] (system:
@@ -53,7 +54,7 @@
           inherit system;
           nixpkgs.overlays = [
             # inputs.neovim-nightly-overlay.overlays.default
-            (import ../overlays/awesome-git.nix)
+            (import ./overlays/awesome-git.nix)
           ];
 
           config.allowUnfree = true;
@@ -65,6 +66,7 @@
           pkgs = legacyPackages.x86_64-linux;
           specialArgs = { inherit inputs; };
           modules = [
+            commonConfig
             inputs.stylix.nixosModules.stylix
             inputs.home-manager.nixosModules.home-manager
             ./hosts/vm/configuration.nix
@@ -75,6 +77,7 @@
           pkgs = legacyPackages.x86_64-linux;
           specialArgs = { inherit inputs; };
           modules = [
+            commonConfig
             inputs.stylix.nixosModules.stylix
             inputs.home-manager.nixosModules.home-manager
             ./hosts/x1/configuration.nix
@@ -85,6 +88,7 @@
           pkgs = legacyPackages.x86_64-linux;
           specialArgs = { inherit inputs; };
           modules = [
+            commonConfig
             inputs.stylix.nixosModules.stylix
             inputs.home-manager.nixosModules.home-manager
             inputs.nixos-wsl.nixosModules.wsl
