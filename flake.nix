@@ -47,17 +47,20 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
       commonConfig = import ./hosts/common.nix;
+
+      overlays = import ./overlays { inherit inputs; };
     in
     rec {
-      legacyPackages = nixpkgs.lib.genAttrs [ "x86_64-linux" "x86_64-darwin" ] (system:
+      legacyPackages = forAllSystems (system:
         import inputs.nixpkgs {
           inherit system;
-          nixpkgs.overlays = [
-            # inputs.neovim-nightly-overlay.overlays.default
-            (import ./overlays/awesome-git.nix)
-          ];
-
           config.allowUnfree = true;
+          overlays = [
+            overlays.additions
+            overlays.modifications
+            #overlays.unstable-packages
+            # inputs.neovim-nightly-overlay.overlays.default
+          ];
         }
       );
 

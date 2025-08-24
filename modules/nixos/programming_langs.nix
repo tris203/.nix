@@ -8,6 +8,7 @@
 
     roslyn-ls
     rzls
+    vscode-extensions.ms-dotnettools.csharp
 
     gcc
 
