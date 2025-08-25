@@ -75,6 +75,7 @@
     luarocks
     scc
     tree-sitter
+    opencode
   ];
 
   programs.direnv.enable = true;
