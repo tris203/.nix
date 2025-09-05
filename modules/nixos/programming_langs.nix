@@ -6,9 +6,9 @@
 
     copilot-language-server-fhs
 
-    roslyn-ls
-    rzls
-    vscode-extensions.ms-dotnettools.csharp
+    # roslyn-ls
+    # rzls
+    # vscode-extensions.ms-dotnettools.csharp
 
     gcc
 
