@@ -33,6 +33,9 @@ jobs:
       - name: "Install Nix ❄️"
         uses: cachix/install-nix-action@v30
 
+      - name: "Set up caching for Nix"
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
       - name: "Install Cachix ❄️"
         uses: cachix/cachix-action@v15
         with:
