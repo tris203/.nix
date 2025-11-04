@@ -26,7 +26,7 @@
     waybar
     libnotify
     swww
-    rofi-wayland
+    rofi
     brightnessctl
     cliphist
     hyprshot
