@@ -65,16 +65,16 @@
       );
 
       nixosConfigurations = {
-        vm = nixpkgs.lib.nixosSystem {
-          pkgs = legacyPackages.x86_64-linux;
-          specialArgs = { inherit inputs; };
-          modules = [
-            commonConfig
-            inputs.stylix.nixosModules.stylix
-            inputs.home-manager.nixosModules.home-manager
-            ./hosts/vm/configuration.nix
-          ];
-        };
+        # vm = nixpkgs.lib.nixosSystem {
+        #   pkgs = legacyPackages.x86_64-linux;
+        #   specialArgs = { inherit inputs; };
+        #   modules = [
+        #     commonConfig
+        #     inputs.stylix.nixosModules.stylix
+        #     inputs.home-manager.nixosModules.home-manager
+        #     ./hosts/vm/configuration.nix
+        #   ];
+        # };
 
         x1 = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages.x86_64-linux;
