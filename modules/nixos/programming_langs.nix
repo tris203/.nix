@@ -4,7 +4,7 @@
     direnv
     wakatime-cli
 
-    copilot-language-server-fhs
+    copilot-language-server
 
     # roslyn-ls
     # rzls
@@ -24,7 +24,7 @@
     nodePackages_latest.bash-language-server
     # biome
     docker-compose-language-service
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     gopls
     vscode-langservers-extracted
     htmx-lsp
