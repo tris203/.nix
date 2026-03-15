@@ -9,5 +9,6 @@
     obsidian
     spotify
     nh
+    orca-slicer
   ];
 }
