@@ -15,13 +15,13 @@
     # Interpreters/Compilers
     # go
     rustc
-    nodePackages_latest.nodejs
+    nodejs_latest
     luajit
     dotnet-sdk_9
     gnumake
 
     # LSPs
-    nodePackages_latest.bash-language-server
+    bash-language-server
     # biome
     docker-compose-language-service
     dockerfile-language-server
@@ -34,7 +34,7 @@
     rust-analyzer
     tailwindcss-language-server
     templ
-    nodePackages_latest.typescript-language-server
+    typescript-go
 
     # Linter/Formatter
     eslint_d
