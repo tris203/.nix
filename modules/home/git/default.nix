@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       user = {
-        bame = "tris203";
+        name = "tris203";
         email = "admin@snappeh.com";
         signingkey = "~/.ssh/github.pub";
       };
@@ -14,10 +14,12 @@
         "https://gist.github.com" = { helper = "!gh auth git-credential"; };
       };
     };
+
+    signing.format = "ssh";
   };
 
-    programs.gh = {
-      enable = true;
-      gitCredentialHelper.enable = false;
-    };
-  }
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = false;
+  };
+}
