@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
 
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -14,6 +14,8 @@
   stylix.targets.neovim.enable = false;
   stylix.targets.neovide.enable = false;
   stylix.image = ./wallpaper.jpg;
+
+  gtk.gtk4.theme = config.gtk.theme;
 
   stylix.opacity = {
     desktop = 0.5;

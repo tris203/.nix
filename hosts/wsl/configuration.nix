@@ -5,29 +5,19 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, pkgs, ... }:
+{ ... }:
 
 {
 
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-
-    ../theme.nix
-
-    ../../modules/nixos/general.nix
-    ../../modules/nixos/programming_langs.nix
-    ../../modules/nixos/terminal_tools.nix
   ];
 
   wsl.enable = true;
   wsl.defaultUser = "tris";
 
   programs.dconf.enable = true;
-
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  users.users.tris.shell = pkgs.zsh;
 
   time.timeZone = "Europe/Guernsey";
 

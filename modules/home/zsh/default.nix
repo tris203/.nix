@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, config, ... }:
 let
   tmuxsessionizer =
     pkgs.writeShellScriptBin "tmuxsessionizer" ./bin/tmux-sessionizer;

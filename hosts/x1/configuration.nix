@@ -19,25 +19,19 @@ in
       # ../../modules/nixos/gnome.nix
       ../../modules/nixos/hyprland.nix
       # ../../modules/nixos/cosmic.nix
-      ../../modules/nixos/discord.nix
-      ../../modules/nixos/general.nix
-      ../../modules/nixos/programming_langs.nix
-      ../../modules/nixos/terminal_tools.nix
       ../../modules/nixos/tailscale.nix
       (import ../../modules/nixos/kanata.nix {
         inherit internalKeyboardDevice tapTime holdTime;
       })
     ];
 
+  home-manager.users.tris.imports = [ ../../modules/home/desktop_apps ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   nix.settings.trusted-users = [ "root" "tris" ];
-
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  users.users.tris.shell = pkgs.zsh;
 
   hardware.bluetooth = {
     package = pkgs.bluez;
@@ -100,12 +94,7 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.tris = {
-    isNormalUser = true;
-    description = "Tris";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
+  users.users.tris.extraGroups = [ "networkmanager" "wheel" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
