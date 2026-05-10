@@ -21,7 +21,7 @@
     networkmanagerapplet
     waybar
     libnotify
-    swww
+    awww
     rofi
     brightnessctl
     cliphist
