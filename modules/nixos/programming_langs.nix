@@ -34,7 +34,7 @@
     rust-analyzer
     tailwindcss-language-server
     templ
-    typescript-go
+    typescript
 
     # Linter/Formatter
     eslint_d

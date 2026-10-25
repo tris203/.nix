@@ -10,7 +10,7 @@
 
   services.blueman.enable = true;
 
-  services.displayManager = { gdm = { enable = true; wayland = true; }; };
+  services.displayManager = { gdm = { enable = true; }; };
 
   environment.sessionVariables = {
     WLR_RENDERER_ALLOW_SOFTWARE = "1";
