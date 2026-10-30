@@ -5,6 +5,7 @@ in
 {
   home.packages = with pkgs; [
     inputs.lookatmego.packages.${system}.lookatmego
+    inputs.t3code.packages.${system}.t3-code-nightly
     nautilus
     element-desktop
     gnome-screenshot

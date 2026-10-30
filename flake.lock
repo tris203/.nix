@@ -264,7 +264,8 @@
         "lookatmego": "lookatmego",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "t3code": "t3code"
       }
     },
     "stylix": {
@@ -313,6 +314,26 @@
         "owner": "nix-systems",
         "ref": "future-26.11",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "t3code": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793396522,
+        "narHash": "sha256-W6sn94O9+T1PszxlVwxhuEndFuXR6RLI4MrnUDrJuwc=",
+        "owner": "omarcresp",
+        "repo": "t3code-flake",
+        "rev": "545d05dcf2ae09a8bc3d41d23ffb100bf6798d27",
+        "type": "github"
+      },
+      "original": {
+        "owner": "omarcresp",
+        "repo": "t3code-flake",
         "type": "github"
       }
     },
