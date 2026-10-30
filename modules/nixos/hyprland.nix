@@ -2,6 +2,8 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    # Match nixpkgs' cached Hyprland build and provide a managed session.
+    withUWSM = true;
   };
 
   hardware.graphics.enable = true;
@@ -10,7 +12,16 @@
 
   services.blueman.enable = true;
 
-  services.displayManager = { gdm = { enable = true; }; };
+  # Provide encrypted Secret Service storage, unlocked by the login PAM stack.
+  services.gnome.gnome-keyring.enable = true;
+
+  services.displayManager = {
+    defaultSession = "hyprland-uwsm";
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+  };
 
   environment.sessionVariables = {
     WLR_RENDERER_ALLOW_SOFTWARE = "1";
